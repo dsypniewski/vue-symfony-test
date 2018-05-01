@@ -1,16 +1,16 @@
 <template>
-	<div>
-		<h1>Form</h1>
-		<form v-html="formHtml" @submit.prevent="sendData"></form>
-	</div>
+	<form v-html="formHtml" @submit.prevent="sendData" :id="formId"></form>
 </template>
 
 <script>
 	import axios from 'axios';
+	import api from '../api/notifications.js';
+	
 	export default {
-		props: ["formKey"],
+		props: ["formType", "action"],
 		data() {
 			return {
+				formId: 'form-' + Math.round(Math.random() * 1000000),
 				formHtml: '',
 				changes: false,
 			};
@@ -33,11 +33,12 @@
 		},
 		methods: {
 			updateHtml() {
-				axios.get('http://localhost:8080/index.php/api/form/footer')
+				api.getFormHtml(this.formType)
 					.then(response => this.formHtml = response.data);
 			},
-			sendData(event) {
-				console.log(event);
+			sendData() {
+				let data = new FormData(document.getElementById(this.formId));
+				axios.post(this.action, data).then(response => console.log(response));
 			},
 		}
 	}

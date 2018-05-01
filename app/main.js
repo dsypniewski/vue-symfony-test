@@ -1,20 +1,7 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
-import router from './router.js';
 import App from './App.vue';
-import BootstrapVue from 'bootstrap-vue'
-
-Vue.use(Vuex);
-Vue.use(BootstrapVue);
-
-const store = new Vuex.Store({
-	state: {
-		breadcrumbs: [],
-	},
-	mutations: {
-		breadcrumbs: (state, value) => state.breadcrumbs = value,
-	}
-});
+import router from './router.js';
+import store from './store/index.js';
 
 new Vue({
 	el: '#app',

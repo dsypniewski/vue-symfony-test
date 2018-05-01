@@ -10,14 +10,14 @@ class Notifications implements \Panel\ApiInterface
 		return [
 			[
 				'id' => 1,
-				'name' => 'Test',
-				'code' => 'test',
+				'name' => 'Account created',
+				'code' => 'account_created',
 			],
 			[
 				'id' => 2,
-				'name' => 'Test2',
-				'code' => 'test2',
-			]
+				'name' => 'Order confirm',
+				'code' => 'order_confirm',
+			],
 		];
 	}
 

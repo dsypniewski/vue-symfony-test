@@ -2,14 +2,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-				<b-breadcrumb :items="breadcrumbs"/>	
+				<top-nav></top-nav>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-2">
-				<sidebar></sidebar>
-			</div>
-			<div class="col-10">
+			<div class="col-12">
 				<router-view :key="$route.fullPath"></router-view>
 			</div>
 		</div>
@@ -17,15 +14,12 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex'
 	import 'bootstrap/dist/css/bootstrap.min.css';
-	import Sidebar from '@components/Sidebar.vue';
+	import TopNav from './components/TopNav.vue';
 	
 	export default {
 		components: {
-			sidebar: Sidebar
+			TopNav,
 		},
-		name: 'app',
-		computed: mapState(["breadcrumbs"]),
 	}
 </script>
